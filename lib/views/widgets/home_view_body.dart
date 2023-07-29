@@ -1,4 +1,3 @@
-
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +10,20 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.0),
+    return   const Padding(
+      padding:EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children:[
           CustomAppBar(),
           FeaturedBookListview(),
           SizedBox(
             height: 50,
           ),
-          Text('Best Seller',style: Styles.titleMedium),
+          Text('Best Seller', style: Styles.textStyle18),
+          // Text('Best Seller', style: Styles.titleMedium.copyWith(
+          //   fontSize: 64
+          // )), another way to alter the custom styles
           BestSellerListViewItem(),
         ],
       ),
@@ -34,35 +36,32 @@ class BestSellerListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
+    return SizedBox(
       height: 125,
       child: Row(
         children: [
-        AspectRatio(
-        aspectRatio: 2.5 / 4, //raatio of the width with respect to height
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.red,
-            image: const DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                AssetsData.test_image,
+          AspectRatio(
+            aspectRatio: 2.5 / 4, //ratio of the width with respect to height
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.red,
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    AssetsData.test_image,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
           const Column(
             children: [
               Text(''),
-
             ],
           ),
-
         ],
       ),
     );
   }
 }
-

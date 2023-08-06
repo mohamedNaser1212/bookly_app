@@ -3,7 +3,7 @@ import 'package:bookly/features/home/data/repos/home_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../../models/book_model/book_model.dart';
+import '../../../models/book_model/book_model.dart';
 
 part 'featured_books_state.dart';
 

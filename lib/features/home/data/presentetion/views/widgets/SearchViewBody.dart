@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/styles.dart';
-import '../../../../../../views/widgets/best_seller_list_view_item.dart';
 import '../../../../../../views/widgets/custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -28,7 +27,7 @@ class SearchViewBody extends StatelessWidget {
 }
 
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
+  const SearchResultListView({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,11 @@ class SearchResultListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: BestSellerListViewItem(),
+         //   child: BestSellerListViewItem(
+           //   book: BookModel(volumeInfo: volumeInfo),
+            
+            //),
+            child: Text('searchpage'),
           );
         });
   }

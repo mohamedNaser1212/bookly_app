@@ -9,6 +9,7 @@ abstract class NewestBooksState {
 class NewestBooksInitial extends NewestBooksState {}
 class NewestBooksLoading extends NewestBooksState {}
 class NewestBooksSuccess extends NewestBooksState {
+
 final List<BookModel>books;
 
   const NewestBooksSuccess(this.books);

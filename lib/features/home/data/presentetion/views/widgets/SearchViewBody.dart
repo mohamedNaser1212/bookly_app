@@ -35,7 +35,6 @@ class SearchResultListView extends StatelessWidget {
     return ListView.builder(
       // shrinkWrap: true,//to solve the problem of the sliver //it removed because we add Sliverfillremaining
         padding: EdgeInsets.zero,
-        itemCount: 10,
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),

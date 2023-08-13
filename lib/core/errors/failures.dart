@@ -34,7 +34,7 @@ class ServerFailure extends Failure {
     if(statusCode==400 ||statusCode==403 ){
       return ServerFailure(response['error']['message']);
     }else if(statusCode==404){
-      return ServerFailure('not Found,Please try agaon later');
+      return ServerFailure(response['error']['message']);
     }else if(statusCode==500){
       return ServerFailure('Internal Server error');
     }else{

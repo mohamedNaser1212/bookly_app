@@ -14,10 +14,10 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
  Future<void>fetchFeaturedBooks()async{
 emit(FeaturedBooksLoading());
 
-var result=await homeRepo.fetchNewsetBooks();
+var result=await homeRepo.fetchFeaturedBooks();
 print(result);
 result.fold((failure) {
-   emit( const FeaturedBooksFailure('something went wrong else'));
+   emit( const FeaturedBooksFailure('No Internet Connection'));
 } , (books) {
   emit(FeaturedBooksSuccess(books));
 });

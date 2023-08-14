@@ -22,11 +22,12 @@ class BestSellerListViewItem extends StatelessWidget {
         child: Row(
           children: [
             CustomBookImage(
-                imageUrl: bookModel.volumeInfo.imageLinks.thumbnail),
+                imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '' ),
 
             const SizedBox(
               width: 30,
             ),
+
             //Expanded because the column is the parent of the row below i tell it to expand so the row also expands
             Expanded(
               child: Column(

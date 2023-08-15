@@ -1,4 +1,8 @@
+import 'package:bookly/features/home/data/presentetion/manager/similar_books_cubit/similar_books_cubit.dart';
+import 'package:bookly/views/widgets/custom_error_message.dart';
+import 'package:bookly/views/widgets/custom_loading_indecator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'CustomBookImageItem.dart';
 
@@ -7,20 +11,34 @@ class SimilarBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.15,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+      builder: (context, state) {
+        if (state is SimilarBookSuccess) {
+          return SizedBox(
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.15,
+            child: ListView.builder(
+              itemCount: state.books.length,
+                scrollDirection: Axis.horizontal,
 
-          itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
-              child: CustomBookImage(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-              ),
-            );
-          }),
+                itemBuilder: (context, index) {
+                  return  Padding(
+                    padding:const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: CustomBookImage(
+                      imageUrl:state.books[index].volumeInfo.imageLinks?.thumbnail ?? ''
+                    ),
+                  );
+                }),
+          );
+        }else if (state is SimilarBooksFailure){
+          return CustomErrorWidget(text: state.errMessage);
+
+        }else{
+          return const CustomLoadingIndicator();
+        }
+      },
     );
   }
 }

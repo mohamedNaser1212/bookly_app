@@ -7,8 +7,8 @@ class BookRating extends StatelessWidget {
   const BookRating(
       {super.key, this.mainAxisAlignment = MainAxisAlignment.start, required this.Rating, required this.count});
   final MainAxisAlignment mainAxisAlignment;
-  final num Rating;
-  final int count;
+  final num Rating ;
+  final num count;
   @override
   Widget build(BuildContext context) {
     return Row(

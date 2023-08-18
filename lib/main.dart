@@ -2,6 +2,7 @@ import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/features/home/data/presentetion/manager/featured_book_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/data/presentetion/manager/newset_books/newest_books_cubit.dart';
+import 'package:bookly/features/home/data/presentetion/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/features/home/data/repos/home_repo_implementation.dart';
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
+import 'features/home/data/presentetion/manager/search_books/search_featured_cubit.dart';
 
 
 void main() async {
@@ -40,10 +42,20 @@ class MyApp extends StatelessWidget {
             getIt.get<HomeRepoImp1>(),
 
           )..fetchNewestdBooks(),
-        ),
 
-      //BlocProvider(create: (context)=>FeaturedBooksCubit())
-      //  BlocProvider<NewestBooksCubit>(create: (context)=>NewestBooksCubit()..fetchNewBooks()),
+
+        ),
+        BlocProvider(create: (context)=>SimilarBooksCubit(
+          getIt.get<HomeRepoImp1>(),
+
+        )..fetchSimilarBooks(category: '')),
+        BlocProvider(
+          create: (context)=>SearchFeaturedCubit(
+            getIt.get<HomeRepoImp1>(),
+
+          )..fetchSearchFeaturedBooks(query: '')),
+
+
 
       ],
       child: MaterialApp.router(

@@ -73,4 +73,22 @@ return right(books);
       return left(ServerFailure(e.toString()));
     }
   }
+  //make a future function to implement the search feature
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSearchBooks({required String query})  async {
+    try {
+      var data = await apiService.get(
+          endPoint: 'volumes?Filtering=free-ebooks&Sorting=relevance &q=$query');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
   }

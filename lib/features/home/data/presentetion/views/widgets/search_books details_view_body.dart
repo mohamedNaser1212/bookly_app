@@ -1,13 +1,15 @@
+import 'package:bookly/features/home/data/presentetion/views/widgets/search_details_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../views/widgets/Box_details_section.dart';
-import '../../../../../views/widgets/Similar_Books_Section.dart';
-import '../../../../../views/widgets/custom_book_details_appbar.dart';
-import '../../models/book_model/book_model.dart';
+import '../../../../../../views/widgets/Similar_Books_Section.dart';
+import '../../../../../../views/widgets/custom_book_details_appbar.dart';
+import '../../../models/book_model/book_model.dart';
 
-class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key,required this.bookModel});
-final BookModel bookModel;
+
+
+class SearchBookDetailsViewBody extends StatelessWidget {
+  const SearchBookDetailsViewBody({super.key,required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -20,7 +22,7 @@ final BookModel bookModel;
                   CustomBookDetailsAppBar(
                     bookModel: bookModel,
                   ),
-                BookDetailsSection(
+                SearchBookDetailsSection(
                   bookModel:bookModel ,
                 ),
                 const   Expanded(
@@ -29,10 +31,8 @@ final BookModel bookModel;
                   ),
                 ),
 
-                const   SimilarBooksSection(),
-                const    SizedBox(
-                  height: 20,
-                )
+                const Expanded(child: SimilarBooksSection()),
+               
               ],
             ),
           ),
